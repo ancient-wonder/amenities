@@ -1,0 +1,16 @@
+.boat-rules {
+  .title {
+    font-size: 30;
+    font-weight: bold;
+  }
+  .read-more {
+    color: #2cb5b4;
+  }
+  .read-more:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  border-bottom: solid;
+  border-width: thin;
+  border-color: #cccccc;
+}

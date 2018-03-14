@@ -1,0 +1,54 @@
+{
+  "name": "amenities",
+  "version": "1.0.0",
+  "description": "Boat description",
+  "author": "James Powers",
+  "license": "UNLICENSED",
+  "engines": {
+    "node": ">=6.13.0"
+  },
+  "scripts": {
+    "test": "jest",
+    "start": "npm run seed-db & webpack & node server/index.js ",
+    "dev-react": "webpack -d --watch",
+    "seed-db": "node seeds/worker.js"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "bluebird": "^3.5.1",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.6",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-icons": "^2.2.7",
+    "webpack": "^3.11.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-jest": "^22.4.1",
+    "babel-loader": "^7.1.3",
+    "babel-preset-env": "^1.6.1",
+    "css-loader": "^0.28.10",
+    "enzyme": "^3.3.0",
+    "eslint": "^4.18.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "jest": "^22.4.2",
+    "node-sass": "^4.7.2",
+    "regenerator-runtime": "^0.11.1",
+    "sass-loader": "^6.0.7",
+    "style-loader": "^0.20.2",
+    "webpack": "^3.11.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  }
+}

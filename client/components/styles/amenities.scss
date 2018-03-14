@@ -1,0 +1,30 @@
+.amenities {
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+  .title {
+    font-size: 30;
+    font-weight: bold;
+  }
+  .first {
+    float: left;
+    clear: both;
+    display: block;
+    position: relative;
+    padding-right: 30px;
+  }
+  .second {
+    float: left;
+  }
+  .read-more {
+    clear: both;
+    display: block;
+    position: relative;
+    color: #2cb5b4;
+  }
+  .read-more:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  border-bottom: solid;
+  border-width: thin;
+  border-color: #cccccc;
+}

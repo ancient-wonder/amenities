@@ -1,0 +1,13 @@
+bundle.js
+npm
+npm-debug.log
+node_modules/
+
+pids
+*.pid
+logs
+*.log
+.env
+
+build/
+dist/
