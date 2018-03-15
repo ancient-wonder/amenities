@@ -3,7 +3,7 @@ const { Schema } = mongoose
 const Promise = require('bluebird')
 
 let amenitiesSchema = mongoose.Schema({
-  id: {
+  _id: {
     type: Number,
     unique:true,
   },
@@ -61,7 +61,7 @@ function getAllAmenities() {
 }
 
 function getAmenityById(id) {
-  return Amenities.findOne({ id })
+  return Amenities.findOne({ _id: id })
 }
 
 module.exports = {
@@ -69,21 +69,3 @@ module.exports = {
   getAmenityById,
   getAllAmenities
 }
-
-
-// function randomResolve(name) {
-//   return new Promise(resolve => setTimeout(() => {
-//     console.log(name);
-//     resolve();
-//   }, 100 * Math.random()));
-// }
-
-// Promise.all([ 
-//     randomResolve(1),
-//     randomResolve(2),
-//     randomResolve(3),
-//     randomResolve(4),
-// ])
-// .then(function(){
-//     console.log("All Done!")
-// })

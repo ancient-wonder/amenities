@@ -8,10 +8,10 @@ const tenMilReview = async () => {
   const collection = mongoDb.collection('amenities')
 
   let guests = [];
-  for (let i = 0; i <= 1000000; i++) {
-    if (i !== 0 && i % 1000 === 0) {
+  for (let i = 0; i <= 10000000; i++) {
+    if (i !== 0 && i % 100000 === 0) {
       await collection.insertMany(guests)
-      console.log('1000', i / 1000)
+      console.log('100000', i / 100000)
       guests = []
     }
     guests.push(generate(i))
