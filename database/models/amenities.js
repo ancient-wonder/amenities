@@ -1,16 +1,16 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
-const Promise = require('bluebird');
+const mongoose = require('mongoose')
+const { Schema } = mongoose
+const Promise = require('bluebird')
 
 let amenitiesSchema = mongoose.Schema({
   id: {
-    type: Number,
-    unique:true,
+    type: Number
+    // unique:true,
   },
   user: {
     name: String,
     thumbnail: String,
-    link: String,
+    link: String
   },
   shipDetails: {
     name: String,
@@ -21,7 +21,7 @@ let amenitiesSchema = mongoose.Schema({
     description: String,
     bedrooms: {
       capacity: Number,
-      sleepingArrangement: [Number],
+      sleepingArrangement: [Number]
     },
     amenities: {
       priority: {
@@ -33,7 +33,7 @@ let amenitiesSchema = mongoose.Schema({
         tv: Boolean,
         kitchen: Boolean,
         ac: Boolean,
-        heating: Boolean,
+        heating: Boolean
       },
       optional: {
         inflatables: Boolean,
@@ -43,29 +43,46 @@ let amenitiesSchema = mongoose.Schema({
         sharkCage: Boolean,
         medication: Boolean,
         wifi: Boolean,
-        pool: Boolean,
-      },
+        pool: Boolean
+      }
     }
-  },
-});
+  }
+})
 
-let Amenities = mongoose.model('Amenities', amenitiesSchema);
-
+let Amenities = mongoose.model('Amenities', amenitiesSchema)
 
 function insertData(amenities) {
-  return Amenities.insertMany(amenities);
+  return Amenities.insertMany(amenities)
 }
 
 function getAllAmenities() {
-  return Amenities.find();
+  return Amenities.find()
 }
 
 function getAmenityById(id) {
-  return Amenities.findOne({ id });
+  return Amenities.findOne({ id })
 }
 
 module.exports = {
   insertData,
   getAmenityById,
-  getAllAmenities,
-};
+  getAllAmenities
+}
+
+
+// function randomResolve(name) {
+//   return new Promise(resolve => setTimeout(() => {
+//     console.log(name);
+//     resolve();
+//   }, 100 * Math.random()));
+// }
+
+// Promise.all([ 
+//     randomResolve(1),
+//     randomResolve(2),
+//     randomResolve(3),
+//     randomResolve(4),
+// ])
+// .then(function(){
+//     console.log("All Done!")
+// })
