@@ -14,4 +14,3 @@ async function processArray(array) {
   console.log('Done')
 }
 
-console.log(processArray([1, 2, 3]))

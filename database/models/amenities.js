@@ -4,8 +4,8 @@ const Promise = require('bluebird')
 
 let amenitiesSchema = mongoose.Schema({
   id: {
-    type: Number
-    // unique:true,
+    type: Number,
+    unique:true,
   },
   user: {
     name: String,
@@ -46,7 +46,8 @@ let amenitiesSchema = mongoose.Schema({
         pool: Boolean
       }
     }
-  }
+  },
+  index: true
 })
 
 let Amenities = mongoose.model('Amenities', amenitiesSchema)
