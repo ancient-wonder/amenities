@@ -28,25 +28,25 @@ module.exports = idx => {
       },
       amenities: {
         priority: {
-          anchor: true,
-          engine: false,
-          lifeJacket: true,
-          twoWayRadio: true,
-          soundSystem: true,
-          tv: false,
-          kitchen: false,
-          ac: false,
-          heating: true
+          anchor: faker.random.boolean(),
+          engine: faker.random.boolean(),
+          lifeJacket: faker.random.boolean(),
+          twoWayRadio: faker.random.boolean(),
+          soundSystem: faker.random.boolean(),
+          tv: faker.random.boolean(),
+          kitchen: faker.random.boolean(),
+          ac: faker.random.boolean(),
+          heating: faker.random.boolean()
         },
         optional: {
-          inflatables: true,
-          fishingGear: true,
-          scubaGear: true,
-          harpoons: true,
-          sharkCage: true,
-          medication: false,
-          wifi: false,
-          pool: true
+          inflatables: faker.random.boolean(),
+          fishingGear: faker.random.boolean(),
+          scubaGear: faker.random.boolean(),
+          harpoons: faker.random.boolean(),
+          sharkCage: faker.random.boolean(),
+          medication: faker.random.boolean(),
+          wifi: faker.random.boolean(),
+          pool: faker.random.boolean()
         }
       }
     }

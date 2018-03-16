@@ -9,6 +9,7 @@ const tenMilReview = async () => {
 
   let guests = [];
   for (let i = 0; i <= 10000000; i++) {
+    console.time()
     if (i !== 0 && i % 100000 === 0) {
       await collection.insertMany(guests)
       console.log('100000', i / 100000)
@@ -17,5 +18,6 @@ const tenMilReview = async () => {
     guests.push(generate(i))
   }
   clientConnect.close()
+  console.timeEnd()
 }
 tenMilReview()
