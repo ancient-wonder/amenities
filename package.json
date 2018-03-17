@@ -23,6 +23,7 @@
     "faker": "^4.1.0",
     "mongodb": "^3.0.4",
     "mongoose": "^5.0.6",
+    "pg-promise": "^8.2.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-icons": "^2.2.7",
