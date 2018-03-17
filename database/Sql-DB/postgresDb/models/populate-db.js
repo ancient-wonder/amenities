@@ -10,17 +10,18 @@ const amenityObj = () => {
   }
 }
 
-const userObj = (idx) => {
+const userObj = id => {
   return {
-    amenityid: idx,
+    amenityid: id,
     name: faker.name.lastName(),
     thumbnail: faker.internet.avatar(),
     link: faker.internet.url()
   }
 }
 
-const shipDetailObj = () => {
+const shipDetailObj = id => {
   return {
+    amenityid: id,
     name: faker.name.jobArea(),
     dock: faker.name.firstName(),
     capacity: faker.random.number(100),
@@ -34,8 +35,9 @@ const shipDetailObj = () => {
   }
 }
 
-const bedRoomObj = () => {
+const bedRoomObj = id => {
   return {
+    amenityid: id,
     capacity: faker.random.number(2),
     sleepingArrangement: [
       faker.random.number(4),
@@ -45,8 +47,9 @@ const bedRoomObj = () => {
   }
 }
 
-const priorityObj = () => {
+const priorityObj = id => {
   return {
+    amenityid: id,
     anchor: faker.random.boolean(),
     engine: faker.random.boolean(),
     lifeJacket: faker.random.boolean(),
@@ -59,8 +62,9 @@ const priorityObj = () => {
   }
 }
 
-const optionalObj = () => {
+const optionalObj = id => {
   return {
+    amenityid: id,
     inflatables: faker.random.boolean(),
     fishingGear: faker.random.boolean(),
     scubaGear: faker.random.boolean(),
