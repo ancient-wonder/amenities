@@ -2,7 +2,7 @@ module.exports = {
   amenityObj: { th: ['uniques'], tn: { table: 'amenity' } },
   user: {
     th: ['amenityid', 'name', 'thumbnail', 'link'],
-    tn: { table: '_user' }
+    tn: { table: 'users' }
   },
   shipdetail: {
     th: ['amenityid', 'name', 'dock', 'capacity', 'boatrules', 'description'],

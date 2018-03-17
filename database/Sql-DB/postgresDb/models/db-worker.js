@@ -7,9 +7,10 @@ const dbtables = pgp({
   database: 'amenity',
   port: 5432
 })
+// 37 minutes total for 7 table insertion
 
 const batchInsert = async () => {
-  for (let i = 1; i < 10000; i+=100) {
+  for (let i = 1; i < 10000000; i += 100000) {
     await insertTable.insertIntoUniqueTable(
       dbtables,
       pgp,
@@ -55,22 +56,3 @@ const batchInsert = async () => {
   }
 }
 batchInsert()
-
-
-/* 
-await insertTable.insertIntoGenericTable(
-  dbtables,
-  pgp,
-  1,
-  postTableInfo.amenityObj,
-  populate.amenity
-)
-await insertTable.insertIntoGenericTable(
-  dbtables,
-  pgp,
-  1,
-  postTableInfo.user,
-  populate.userobj
-)
-
- */
