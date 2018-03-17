@@ -27,11 +27,11 @@ const createAmenity = () => {
 
 const createUser = () => {
   const data = []
-  for (let i = 0; i < 100; i++) {
-    data.push(populate.userobj())
+  for (let i = 1; i <= 100; i++) {
+    data.push(populate.userobj(i))
   }
   const columnHeader = new pgp.helpers.ColumnSet(
-    ['name', 'thumbnail', 'link'],
+    ['amenityid', 'name', 'thumbnail', 'link'],
     { table: '_user' }
   )
   const query = pgp.helpers.insert(data, columnHeader)
@@ -41,8 +41,9 @@ const createUser = () => {
     .catch(e => console.log('failed to save to amenity T/T.T/T', e))
 }
 
-const batchInsert = () => {
+const batchInsert = async () => {
   createAmenity()
-  .then(() => createUser())
+    .then(() => createUser())
+    .catch(e => 'failed to save amenity')
 }
 batchInsert()

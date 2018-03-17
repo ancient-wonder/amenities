@@ -10,8 +10,9 @@ const amenityObj = () => {
   }
 }
 
-const userObj = () => {
+const userObj = (idx) => {
   return {
+    amenityid: idx,
     name: faker.name.lastName(),
     thumbnail: faker.internet.avatar(),
     link: faker.internet.url()
