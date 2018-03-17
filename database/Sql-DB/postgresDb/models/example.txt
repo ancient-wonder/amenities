@@ -1,0 +1,80 @@
+/* 
+  Database: ancient wonder
+  =====================================
+
+  table amenities
+  
+  id: unique, auto_inc
+
+  userID: foreign key ==> user
+
+  shipID: foreign key ==> shipDetails
+
+  =============== ======================
+
+  table userTable
+
+  id: unique, auto_inc
+  name: String
+  thumbnail: String
+  link: String
+
+  =====================================
+
+  table shipDetailsTable
+
+  id: unique
+  name: String
+  dock: String
+  capacity: Number
+  boatRules: [String] STRING []
+  heads: Number
+  description: String
+  bedroomID: foreign ==> bedrooms
+  ammenityID: ==> amenities
+
+  =====================================
+
+  table bedroomsTable
+
+  id: unique
+  capacity: Number
+  sleepingArrangement: [Number]
+
+  =====================================
+
+  table amenitiesTable
+
+  id: unique
+  priority_id: ==> priority
+  optional_id: ==> optional
+
+  =====================================
+
+  table priorityTable
+
+  id: unique
+  anchor: Bool
+  engine: Bool
+  lifeJacket: Bool
+  twoWayRadio: Bool
+  soundSystem: Bool
+  tv: Bool
+  kitchen: Bool
+  ac: Bool
+  heating: Bool
+
+  =====================================
+
+  table optionalTable
+
+  id: unique
+  inflatables: Bool
+  fishingGear: Bool
+  scubaGear: Bool
+  harpoons: Bool
+  sharkCage: Bool
+  medication: Bool
+  wifi: Bool
+  pool: Bool
+*/
