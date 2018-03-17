@@ -13,46 +13,50 @@ CREATE TABLE _user
   thumbnail text,
   link text
 );
-CREATE TABLE shipDetail(
+CREATE TABLE shipdetail
+(
   amenityid INTEGER REFERENCES amenity,
   name text,
   dock text,
   capacity integer,
-  boatRules text [3],
+  boatrules text
+  [3],
   heads SMALLINT,
   description text
 );
-CREATE TABLE bedrooms (
-  amenityid INTEGER REFERENCES amenity,
-  capacity SMALLINT,
-  sleepingArrangement SMALLINT [3]
+  CREATE TABLE bedrooms
+  (
+    amenityid INTEGER REFERENCES amenity,
+    capacity SMALLINT,
+    sleepingarrangement SMALLINT
+    [3]
 );
-CREATE TABLE optionaltable
-(
-  amenityid INTEGER REFERENCES amenity,
-  inflatables boolean,
-  fishingGear boolean,
-  scubaGear boolean,
-  harpoons boolean,
-  sharkCage boolean,
-  medication boolean,
-  wifi boolean,
-  pool boolean
-);
-CREATE TABLE prioritytable
-(
-  amenityid INTEGER REFERENCES amenity,
-  anchor boolean,
-  engine boolean,
-  lifeJacket boolean,
-  twoWayRadio boolean,
-  tv boolean,
-  kitchen boolean,
-  ac boolean,
-  heating boolean
-);
-
-CREATE TABLE client (
-  amenityid INTEGER REFERENCES amenity,
-  name text
-);
+    CREATE TABLE optionaltable
+    (
+      amenityid INTEGER REFERENCES amenity,
+      inflatables boolean,
+      fishinggear boolean,
+      scubagear boolean,
+      harpoons boolean,
+      sharkcage boolean,
+      medication boolean,
+      wifi boolean,
+      pool boolean
+    );
+    CREATE TABLE prioritytable
+    (
+      amenityid INTEGER REFERENCES amenity,
+      anchor boolean,
+      engine boolean,
+      lifejacket boolean,
+      twowayradio boolean,
+      tv boolean,
+      kitchen boolean,
+      ac boolean,
+      heating boolean
+    );
+    CREATE TABLE client
+    (
+      amenityid INTEGER REFERENCES amenity,
+      name text
+    );

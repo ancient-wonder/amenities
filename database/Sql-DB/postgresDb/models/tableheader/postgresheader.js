@@ -5,21 +5,21 @@ module.exports = {
     tn: { table: '_user' }
   },
   shipdetail: {
-    th: ['amenityid', 'name', 'dock', 'capacity', 'boatRules', 'description'],
-    tn: { table: 'shipDetail' }
+    th: ['amenityid', 'name', 'dock', 'capacity', 'boatrules', 'description'],
+    tn: { table: 'shipdetail' }
   },
   bedrooms: {
-    th: ['amenityid', 'capacity', 'sleepingArrangement'],
+    th: ['amenityid', 'capacity', 'sleepingarrangement'],
     tn: { table: 'bedrooms' }
   },
   optionaltable: {
     th: [
       'amenityid',
       'inflatables',
-      'fishingGear',
-      'scubaGear',
+      'fishinggear',
+      'scubagear',
       'harpoons',
-      'sharkCage',
+      'sharkcage',
       'medication',
       'wifi',
       'pool'
@@ -31,8 +31,8 @@ module.exports = {
       'amenityid',
       'anchor',
       'engine',
-      'lifeJacket',
-      'twoWayRadio',
+      'lifejacket',
+      'twowayradio',
       'tv',
       'kitchen',
       'ac',
