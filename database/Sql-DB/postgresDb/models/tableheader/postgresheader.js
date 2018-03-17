@@ -5,7 +5,7 @@ module.exports = {
     tn: { table: 'users' }
   },
   shipdetail: {
-    th: ['amenityid', 'name', 'dock', 'capacity', 'boatrules', 'description'],
+    th: ['amenityid', 'name', 'dock', 'capacity', 'boatrules', 'heads', 'description'],
     tn: { table: 'shipdetail' }
   },
   bedrooms: {

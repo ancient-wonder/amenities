@@ -6,7 +6,6 @@ CREATE TABLE amenity
   id SERIAL PRIMARY KEY,
   uniques boolean
 );
-
 CREATE TABLE users
 (
   amenityid INTEGER REFERENCES amenity,
