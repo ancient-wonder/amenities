@@ -1,94 +1,76 @@
-const faker = require('faker');
+const pgp = require('pg-promise')();
 
-const settings = {
-  dataSize: 1000,
-  options: ['Entire Place', 'Shared Room', 'Private Room'],
-  thumbnailImage: {
-    width: 316,
-    height: 210,
-  },
-};
+const generateData = require('./generateData');
 
-const getRandomNum = (min, max, decimalPlaces) => {
-  decimalPlaces = decimalPlaces || 0;
-  const multiplier = Math.pow(10, decimalPlaces);
-  const minAdj = min * multiplier;
-  const maxAdj = ((max - 1) * multiplier) + 1;
+const dataSize = 10000000;
 
-  const randomNumAdj = Math.floor(Math.random() * (maxAdj - minAdj)) + minAdj;
-  return randomNumAdj / multiplier;
-};
+const db = pgp({
+  database: 'postgres',
+  port: 5432,
+});
 
-const getRandomList = (index, dataSize) => {
-  const obj = {};
-  const result = [];
-  for (let i = 0; i < 7; i += 1) {
-    const num = Math.floor(Math.random() * dataSize);
-    if (result.includes(num)) {
-      i -= 1;
-    } else {
-      result.push(num);
-    }
+const dbt = pgp({
+  database: 'similarlistings',
+  port: 5432,
+});
+
+const insertList = (start) => {
+  const data = [];
+  for (let i = start; i < start + 1000; i += 1) {
+    data.push(generateData.createObj(i, dataSize));
   }
+  const cs = new pgp.helpers.ColumnSet(
+    ['id', 'url', 'title', 'type', 'numbeds', 'price', 'numratings', 'avgstars', 'thumbnailimage', 'listings'],
+    { table: 'list' },
+  );
 
-  obj.id = index;
-  obj.listings = JSON.stringify(result);
+  const query = pgp.helpers.insert(data, cs);
 
-  return obj;
+  return dbt.none(query)
+    .then((data) => {
+      console.log(`list success stored at ${start + 1000}!`);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 
-const getRandomArray = (dataSize) => {
-  const result = [];
-  for (let i = 0; i < 7; i += 1) {
-    const num = Math.floor(Math.random() * dataSize);
-    if (result.includes(num)) {
-      i -= 1;
-    } else {
-      result.push(num);
-    }
-  }
-
-  return result;
+const createListTB = () => {
+  dbt.none('CREATE TABLE list(' +
+    'id INTEGER PRIMARY KEY,' +
+    'url TEXT,' +
+    'title TEXT,' +
+    'type TEXT,' +
+    'numbeds INTEGER,' +
+    'price INTEGER,' +
+    'numratings DOUBLE PRECISION,' +
+    'avgstars DOUBLE PRECISION,' +
+    'thumbnailimage TEXT,' +
+    'listings INTEGER []);')
+    .then((data) => {
+      console.log('list table successfully created');
+    })
+    .then(async () => {
+      for (let i = 0; i < dataSize; i += 1000) {
+        await insertList(i);
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 
-const createObj = (id, dataSize) => {
-  const obj = {};
-  obj.id = id;
-  obj.url = `/listings/${id}`;
-  obj.title = faker.lorem.words();
-  obj.type = settings.options[Math.floor(Math.random() * (settings.options.length - 1))];
-  obj.numbeds = getRandomNum(1, 8);
-  obj.price = getRandomNum(50, 1000, 2);
-  obj.numratings = getRandomNum(1, 5, 1);
-  obj.avgstars = getRandomNum(1, 5);
-  obj.thumbnailimage = 'https://picsum.photos/' +
-                  `${settings.thumbnailImage.width}/` +
-                  `${settings.thumbnailImage.height}` +
-                  `?image=${id}`;
-  obj.listings = getRandomArray(dataSize);
-  return obj;
+const createDB = () => {
+  db.none('CREATE DATABASE similarlistings')
+    .then((data) => {
+      console.log('successfully created');
+    })
+    .then(() => {
+      createListTB();
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };
 
-// id | avgstars | numbeds | numratings | price | similarlist | thumbnailimage | title | type | url
-const createCassandra = (id, dataSize) => {
-  const arr = [];
-  arr.push(id);
-  arr.push(getRandomNum(1, 5));
-  arr.push(getRandomNum(1, 8));
-  arr.push(getRandomNum(1, 5, 1));
-  arr.push(getRandomNum(50, 1000, 2));
-  arr.push(getRandomArray(dataSize));
-  arr.push('https://picsum.photos/' +
-    `${settings.thumbnailImage.width}/` +
-    `${settings.thumbnailImage.height}` +
-    `?image=${id}`);
-  arr.push(faker.lorem.words());
-  arr.push(settings.options[Math.floor(Math.random() * (settings.options.length - 1))]);
-  arr.push(`/listings/${id}`);
-
-  return arr;
-};
-
-module.exports.createObj = createObj;
-module.exports.createCassandra = createCassandra;
-module.exports.getRandomList = getRandomList;
+createDB();

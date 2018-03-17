@@ -8,7 +8,7 @@ CREATE TABLE amenity
 );
 CREATE TABLE _user
 (
-  amenityid INTEGER REFERENCES amenity,
+  amenityid INTEGER REFERENCES amenity(id),
   name text,
   thumbnail text,
   link text
