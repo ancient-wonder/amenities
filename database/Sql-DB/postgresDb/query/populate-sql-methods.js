@@ -30,6 +30,6 @@ insertIntoGenericTable = (postgresTable, pgPromiseObj, start, tableInfo, populat
 }
 
 module.exports = {
-  insertIntoUniqueTable: insertIntoUniqueTable,
-  insertIntoGenericTable: insertIntoGenericTable
+  insertIntoUniqueTable,
+  insertIntoGenericTable
 }
