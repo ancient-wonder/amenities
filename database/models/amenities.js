@@ -3,7 +3,7 @@ const { Schema } = mongoose
 const Promise = require('bluebird')
 
 let amenitiesSchema = mongoose.Schema({
-  _id: {
+  id: {
     type: Number,
     unique:true,
   },
