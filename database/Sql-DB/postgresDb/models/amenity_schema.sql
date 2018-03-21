@@ -3,7 +3,7 @@ CREATE DATABASE amenity;
 \c amenity
 CREATE TABLE amenity
 (
-  id SERIAL PRIMARY KEY,
+  id Serial PRIMARY KEY,
   uniques boolean
 );
 CREATE TABLE users

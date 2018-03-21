@@ -1,7 +1,7 @@
 const faker = require('faker')
 module.exports = idx => {
   return {
-    _id: idx,
+    id: idx,
     user: {
       name: faker.name.lastName(),
       thumbnail: faker.internet.avatar(),
