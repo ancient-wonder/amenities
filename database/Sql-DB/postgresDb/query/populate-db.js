@@ -12,7 +12,7 @@ const createShipObj = () => {
 
 const createUserObj = id => {
   return {
-    userid: id,
+    shipid: id,
     name: faker.name.lastName(),
     thumbnail: faker.internet.avatar(),
     link: faker.internet.url()
@@ -62,43 +62,3 @@ module.exports = {
   createUserObj,
   createShipDetailsObj
 }
-
-// const bedRoomObj = id => {
-//   return {
-//     amenityid: id,
-//     capacity: faker.random.number(2),
-//     sleepingarrangement: [
-//       faker.random.number(4),
-//       faker.random.number(8),
-//       faker.random.number(9)
-//     ]
-//   }
-// }
-
-// const priorityObj = id => {
-//   return {
-//     anchorpriority: faker.random.boolean(),
-//     enginepriority: faker.random.boolean(),
-//     lifejacketpriority: faker.random.boolean(),
-//     twowayradiopriority: faker.random.boolean(),
-//     soundsystempriority: faker.random.boolean(),
-//     tvpriority: faker.random.boolean(),
-//     kitchpriority: faker.random.boolean(),
-//     acpriority: faker.random.boolean(),
-//     heatingpriority: faker.random.boolean()
-//   }
-// }
-
-// const optionalObj = id => {
-//   return {
-//     inflatablesoptional: faker.random.boolean(),
-//     fishinggfishinggearoptionalear: faker.random.boolean(),
-//     scubagearoptional: faker.random.boolean(),
-//     harpoonsoptional: faker.random.boolean(),
-//     sharkcageoptional: faker.random.boolean(),
-//     medicationoptional: faker.random.boolean(),
-//     wifioptional: faker.random.boolean(),
-//     pooloptional: faker.random.boolean()
-//   }
-// }
-

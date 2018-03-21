@@ -13,7 +13,7 @@ CREATE TABLE ship
 CREATE TABLE users
 (
   --  one user can have many ships for rent
-  userid INTEGER REFERENCES ship (id) on update CASCADE on delete CASCADE,
+  shipid INTEGER REFERENCES ship (id) on update CASCADE on delete CASCADE,
   name text,
   thumbnail text,
   link text

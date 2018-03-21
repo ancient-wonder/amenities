@@ -23,6 +23,7 @@ const shipDetailHeader = {
     'enginepriority',
     'lifejacketpriority',
     'twowayradiopriority',
+    'soundsystempriority',
     'tvpriority',
     'kitchpriority',
     'acpriority',

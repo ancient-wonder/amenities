@@ -11,3 +11,4 @@ logs
 
 build/
 dist/
+.vscode/temp.sql

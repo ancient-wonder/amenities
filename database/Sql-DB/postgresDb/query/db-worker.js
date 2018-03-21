@@ -1,7 +1,7 @@
 const {
   insertIntoUniqueTable,
   insertIntoGenericTable
-} = require('./query/populate-sql-methods')
+} = require('./populate-sql-methods')
 const {
   createShipObj,
   createUserObj,
@@ -11,7 +11,7 @@ const {
   shipHeader,
   usersHeader,
   shipDetailHeader
-} = require('./schema/amenities_header')
+} = require('../schema/amenities_header')
 const pgp = require('pg-promise')()
 const dbtables = pgp({
   database: 'amenities',
@@ -20,11 +20,17 @@ const dbtables = pgp({
 // 37 minutes total for 7 table insertion
 
 const batchInsert = async () => {
-  for (let i = 1; i < 10000; i += 1000) {
+  for (let i = 1; i < 10000000; i += 100000) {
     await insertIntoUniqueTable(dbtables, pgp, i, shipHeader, createShipObj)
     await Promise.all([
       insertIntoGenericTable(dbtables, pgp, i, usersHeader, createUserObj),
-      insertIntoGenericTable(dbtables, pgp, i, shipDetailHeader, createShipDetailsObj)
+      insertIntoGenericTable(
+        dbtables,
+        pgp,
+        i,
+        shipDetailHeader,
+        createShipDetailsObj
+      )
     ])
   }
 }
