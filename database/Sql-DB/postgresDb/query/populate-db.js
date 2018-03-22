@@ -13,7 +13,7 @@ const createShipObj = () => {
 const createUserObj = id => {
   return {
     shipid: id,
-    name: faker.name.lastName(),
+    username: faker.name.lastName(),
     thumbnail: faker.internet.avatar(),
     link: faker.internet.url()
   }
@@ -22,7 +22,7 @@ const createUserObj = id => {
 const createShipDetailsObj = id => {
   return {
     ownerid: id,
-    name: faker.name.jobArea(),
+    shipname: faker.name.jobArea(),
     dock: faker.name.firstName(),
     capacity: faker.random.number(100),
     boatrules: [

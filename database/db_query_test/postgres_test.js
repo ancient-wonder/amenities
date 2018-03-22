@@ -13,7 +13,7 @@ const postgres = require('pg-promise')(initOptions)
 const connectionParams = {
   host: 'localhost', // 'localhost' is the default;
   port: 5432, // 5432 is the default;
-  database: 'amenity',
+  database: 'amenities',
 }
 
 const db = postgres(connectionParams) // database instance;
@@ -22,23 +22,10 @@ const postgresQuery = async function postgresQuery() {
   try {
     let queryTimes = []
 
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 2000; i++) {
       const start = Date.now()
       const users = await db.any(
-        `select 
-	*
-from amenity
-inner join bedrooms
-on id = bedrooms.amenityid
-inner join optionaltable
-on bedrooms.amenityid = optionaltable.amenityid
-inner join prioritytable
-on optionaltable.amenityid = prioritytable.amenityid
-inner join shipdetail
-on prioritytable.amenityid = shipdetail.amenityid
-inner join users
-on shipdetail.amenityid = users.amenityid
-where id = ${randomInt(1, 9999999)};`
+        `select * from ship join shipdetail on ship.id = shipdetail.ownerid join users on shipdetail.ownerid = users.shipid where ship.id = ${randomInt(1, 9999999)};`
       )
       const end = Date.now()
       queryTimes.push(end - start)

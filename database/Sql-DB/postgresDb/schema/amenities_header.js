@@ -4,14 +4,14 @@ const shipHeader = {
 }
 
 const usersHeader = {
-  th: ['shipid', 'name', 'thumbnail', 'link'],
+  th: ['shipid', 'username', 'thumbnail', 'link'],
   tn: { table: 'users' }
 }
 
 const shipDetailHeader = {
   th: [
     'ownerid',
-    'name',
+    'shipname',
     'dock',
     'capacity',
     'boatrules',
