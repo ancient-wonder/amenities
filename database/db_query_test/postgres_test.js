@@ -44,3 +44,4 @@ const postgresQuery = async function postgresQuery() {
 }
 
 postgresQuery()
+// console.log(process.env.PORT)
