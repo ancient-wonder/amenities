@@ -13,10 +13,13 @@ app.use('/amenities/:id', express.static(__dirname + '/../client'))
 app.use(express.static(__dirname + '/../client'))
 
 app.get('/amenities/:id/amenities/', (req, res) => {
-  console.log('Serving GET request on url /amenities')
   const { id } = req.params
   // Amenities.getAmenityById(id).then(result => res.json(result))
-  pgData(id).then(result => res.json(result))
+  try {
+    pgData(id).then(result => res.json(result))
+  } catch (e) {
+    res.status(404).send('Invalid Parm')
+  }
 })
 
 app.listen(port, function() {
