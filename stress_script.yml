@@ -1,5 +1,5 @@
 config:
-  target: 'http://localhost:3000'
+  target: 'http://localhost:3001'
   phases:
     - duration: 30
       arrivalRate: 30
@@ -7,7 +7,7 @@ scenarios:
 - flow:
     - loop:
       - get:
-          url: "/listings/{{ $loopElement }}"
+          url: "/amenities/{{ $loopElement }}"
       over:
         - 9999999
         - 6345343
