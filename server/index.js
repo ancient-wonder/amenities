@@ -2,20 +2,7 @@ const cluster = require('cluster')
 
 require('newrelic')
 
-cache = (request, response, next) => {
-  const id = request.params.id
-  client.get(id, (error, data) => {
-    if (error) {
-      throw error
-    }
-    if (data !== null) {
-      const result = JSON.parse(data)
-      response.send(result)
-    } else {
-      next()
-    }
-  })
-}
+
 
 // using cluster
 
@@ -46,6 +33,27 @@ if (cluster.isMaster) {
   app.use(cors())
   app.use('/amenities/:id', express.static(__dirname + '/../client'))
   app.use(express.static(__dirname + '/../client'))
+
+  cache = (request, response, next) => {
+    const id = request.params.id
+    client.get(id, (error, data) => {
+      if (error) {
+        throw error
+      }
+      if (data !== null) {
+        const result = JSON.parse(data)
+        response.send(result)
+      } else {
+        next()
+      }
+    })
+  }
+
+  app.get('*.js', function (req, res, next) {
+    req.url = req.url + '.gz';
+    res.set('Content-Encoding', 'gzip');
+    next();
+  });
 
   app.get('/amenities/:id/amenities/', cache, async (req, res) => {
     const { id } = req.params
