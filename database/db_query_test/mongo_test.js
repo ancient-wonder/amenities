@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const MongoClient = require('mongodb').MongoClient;
 
 const url = 'mongodb://localhost';
-const dbName = 'photos';
+const dbName = 'amenities';
 
 
 const randomInt = function randomInt(min, max){
@@ -16,7 +16,7 @@ const mongoConnect = async function mongoConnect(){
 
     let db = client.db(dbName);
 
-    return db.collection('photos'); //return connection object
+    return db.collection('amenities'); //return connection object
 
   } catch (err) {
     console.log(err.stack);
@@ -26,28 +26,64 @@ const mongoConnect = async function mongoConnect(){
 
 const mongooseConnect = async function mongooseConnect(){
 
-  await mongoose.connect('mongodb://localhost/photos');
+  await mongoose.connect('mongodb://localhost/amenities');
 
 }
 
-const photoSchema = mongoose.Schema({
-  place_id: {
+const amenitiesSchema = mongoose.Schema({
+  id: {
     type: Number,
-    unique: true,
-    index: true
+    unique:true,
   },
-  place_name: String,
-  photos: Array,
-  reviews: Array,
-});
-
+  user: {
+    name: String,
+    thumbnail: String,
+    link: String
+  },
+  shipDetails: {
+    name: String,
+    dock: String,
+    capacity: Number,
+    boatRules: [String],
+    heads: Number,
+    description: String,
+    bedrooms: {
+      capacity: Number,
+      sleepingArrangement: [Number]
+    },
+    amenities: {
+      priority: {
+        anchor: Boolean,
+        engine: Boolean,
+        lifeJacket: Boolean,
+        twoWayRadio: Boolean,
+        soundSystem: Boolean,
+        tv: Boolean,
+        kitchen: Boolean,
+        ac: Boolean,
+        heating: Boolean
+      },
+      optional: {
+        inflatables: Boolean,
+        fishingGear: Boolean,
+        scubaGear: Boolean,
+        harpoons: Boolean,
+        sharkCage: Boolean,
+        medication: Boolean,
+        wifi: Boolean,
+        pool: Boolean
+      }
+    }
+  },
+  index: true
+})
 
 const findOneMongoose = async function findOneMongoose(){
 
-  const Photos = mongoose.model('Photos', photoSchema);
+  const Amenities = mongoose.model('Amenities', amenitiesSchema);
 
   const findOne = async function findOne(id) {
-    return await Photos.find({place_id: id}).limit(1);
+    return await Amenities.find({place_id: id}).limit(1);
   }
 
   let queryTimes = [];

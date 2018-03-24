@@ -33,6 +33,12 @@ const batchInsert = async () => {
       )
     ])
   }
+  dbtables
+    .none(`CREATE INDEX user_idx ON users (shipid)`)
+    .catch(e => console.log('failed to create index on user'))
+  dbtables
+    .none(`CREATE INDEX shipdetail_idx ON shipdetail (ownerid)`)
+    .catch(e => console.log('failed to create idx on shipdetail'))
 }
 // batchIndex()
 batchInsert()
