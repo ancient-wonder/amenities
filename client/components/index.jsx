@@ -35,5 +35,5 @@ class App extends React.Component {
   }
 }
 
-// ReactDOM.render(<App/>, document.getElementById('app'));
-window.Amenities = App;
+ReactDOM.render(<App/>, document.getElementById('app'));
+// window.Amenities = App;
