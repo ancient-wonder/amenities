@@ -1,4 +1,4 @@
 // output
-import App from './components/index.jsx'
+import Amenities from './components/index.jsx'
 
-windows.App = App
+windows.Amenities = Amenities

@@ -1,3 +1,3 @@
-import App from './components/index.jsx'
+import Amenities from './components/index.jsx'
 
-export default App
+export default Amenities

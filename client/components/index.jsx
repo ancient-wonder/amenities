@@ -5,7 +5,7 @@ import Description from './description.jsx'
 import axios from 'axios'
 import dummy from '../../mockData.js'
 
-class App extends React.Component {
+class Amenities extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -35,6 +35,6 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'))
+ReactDOM.render(<Amenities />, document.getElementById('app'))
 // window.Amenities = App;
-export default App
+export default Amenities
