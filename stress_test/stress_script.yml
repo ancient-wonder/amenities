@@ -1,0 +1,13 @@
+config:
+  target: 'http://localhost:3001'
+  phases:
+    - duration: 30
+      arrivalRate: 30
+  processor: './processor.js'
+scenarios:
+- flow:
+    - loop:
+      - function: 'randomNum'
+      - get:
+          url: '/amenities/{{ id }}'
+      count: 200
