@@ -35,6 +35,6 @@ class Amenities extends React.Component {
   }
 }
 
-ReactDOM.render(<Amenities />, document.getElementById('app'))
+// ReactDOM.render(<Amenities />, document.getElementById('Amenities'))
 // window.Amenities = App;
 export default Amenities
