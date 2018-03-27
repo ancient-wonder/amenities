@@ -4,6 +4,9 @@ npm-debug.log
 node_modules/
 newrelic.js
 
+server/
+index copy.js
+
 pids
 *.pid
 logs
