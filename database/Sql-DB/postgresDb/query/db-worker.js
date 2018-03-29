@@ -16,6 +16,7 @@ const pgp = require('pg-promise')()
 const dbtables = pgp({
   user: 'postgres',
   password: 'postgres',
+  host: '0.0.0.0/0',
   database: 'amenities',
   port: 5432
 })
