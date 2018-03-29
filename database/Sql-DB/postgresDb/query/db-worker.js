@@ -23,13 +23,12 @@ const dbtables = pgp({
 
 const batchInsert = async () => {
   for (let i = 1; i < 10000000; i += 100000) {
-    await insertIntoUniqueTable(dbtables, pgp, i, 100000, shipHeader, createShipObj)
-    await insertIntoGenericTable(dbtables, pgp, i, 100000, usersHeader, createUserObj)
+    await insertIntoUniqueTable(dbtables, pgp, i, shipHeader, createShipObj)
+    await insertIntoGenericTable(dbtables, pgp, i, usersHeader, createUserObj)
     await insertIntoGenericTable(
       dbtables,
       pgp,
       i,
-      100000,
       shipDetailHeader,
       createShipDetailsObj
     )
