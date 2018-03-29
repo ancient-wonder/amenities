@@ -12,7 +12,7 @@
     "start:server": "webpack --watch & node server/index.js",
     "start": "webpack & node server/index.js ",
     "dev-react": "webpack -d --watch",
-    "seed-db": "node seeds/worker.js"
+    "seed:postgres": "node database/Sql-DB/postgresDb/query/db-worker.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
