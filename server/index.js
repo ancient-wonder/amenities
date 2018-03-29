@@ -36,9 +36,14 @@ app.get('/test', (req, res) => {
   res.send('hello world')
 })
 
+app.get('/test2', (req, res) => {
+res.send('derp')
+})
+
 app.get('/amenities/:id/amenities/', cache, async (req, res) => {
   const { id } = req.params
-  // Amenities.getAmenityById(id).then(result => res.json(result))
+  console.log('hello') 
+ // Amenities.getAmenityById(id).then(result => res.json(result))
   try {
     const amenities = await pgData(id)
     client.setex(req.params.id, 300, JSON.stringify(amenities))
