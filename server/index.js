@@ -32,6 +32,10 @@ app.get('*.js', function(req, res, next) {
   next()
 })
 
+app.get('/test', (req, res) => {
+  res.send('hello world')
+})
+
 app.get('/amenities/:id/amenities/', cache, async (req, res) => {
   const { id } = req.params
   // Amenities.getAmenityById(id).then(result => res.json(result))
