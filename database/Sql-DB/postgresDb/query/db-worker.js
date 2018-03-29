@@ -24,16 +24,14 @@ const dbtables = pgp({
 const batchInsert = async () => {
   for (let i = 1; i < 10000; i += 100) {
     await insertIntoUniqueTable(dbtables, pgp, i, shipHeader, createShipObj)
-    await Promise.all([
-      insertIntoGenericTable(dbtables, pgp, i, usersHeader, createUserObj),
-      insertIntoGenericTable(
-        dbtables,
-        pgp,
-        i,
-        shipDetailHeader,
-        createShipDetailsObj
-      )
-    ])
+    await insertIntoGenericTable(dbtables, pgp, i, usersHeader, createUserObj)
+    await insertIntoGenericTable(
+      dbtables,
+      pgp,
+      i,
+      shipDetailHeader,
+      createShipDetailsObj
+    )
   }
   dbtables
     .none(`CREATE INDEX user_idx ON users (shipid)`)
@@ -44,3 +42,14 @@ const batchInsert = async () => {
 }
 // batchIndex()
 batchInsert()
+
+// await Promise.all([
+//   insertIntoGenericTable(dbtables, pgp, i, usersHeader, createUserObj),
+//   insertIntoGenericTable(
+//     dbtables,
+//     pgp,
+//     i,
+//     shipDetailHeader,
+//     createShipDetailsObj
+//   )
+// ])
