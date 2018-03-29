@@ -29,6 +29,7 @@ const batchInsert = async () => {
       dbtables,
       pgp,
       i,
+      100000,
       shipDetailHeader,
       createShipDetailsObj
     )
