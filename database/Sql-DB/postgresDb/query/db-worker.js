@@ -22,9 +22,9 @@ const dbtables = pgp({
 // 37 minutes total for 7 table insertion
 
 const batchInsert = async () => {
-  for (let i = 1; i < 10000; i += 100) {
-    await insertIntoUniqueTable(dbtables, pgp, i, shipHeader, createShipObj)
-    await insertIntoGenericTable(dbtables, pgp, i, usersHeader, createUserObj)
+  for (let i = 1; i < 10000000; i += 100000) {
+    await insertIntoUniqueTable(dbtables, pgp, i, 100000, shipHeader, createShipObj)
+    await insertIntoGenericTable(dbtables, pgp, i, 100000, usersHeader, createUserObj)
     await insertIntoGenericTable(
       dbtables,
       pgp,
@@ -35,9 +35,11 @@ const batchInsert = async () => {
   }
   dbtables
     .none(`CREATE INDEX user_idx ON users (shipid)`)
+    .then(() => console.log('index Created '))
     .catch(e => console.log('failed to create index on user'))
   dbtables
     .none(`CREATE INDEX shipdetail_idx ON shipdetail (ownerid)`)
+    .then(() => console.log('index created on ship detail'))
     .catch(e => console.log('failed to create idx on shipdetail'))
 }
 // batchIndex()
