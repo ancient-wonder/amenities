@@ -7,7 +7,9 @@ const initOptions = {
 
 const pg = require('pg-promise')(initOptions)
 const connectionParams = {
-  host: 'localhost', // 'localhost' is the default;
+  user: 'postgres',
+  password: 'postgres',
+  host: '13.56.223.123', // 'localhost' is the default;
   port: 5432, // 5432 is the default;
   database: 'amenities'
 }
