@@ -42,7 +42,7 @@ res.send('derp')
 
 app.get('/amenities/:id/amenities/', cache, async (req, res) => {
   const { id } = req.params
-
+  console.log('hello world')
  // Amenities.getAmenityById(id).then(result => res.json(result))
   try {
     const amenities = await pgData(id)
@@ -50,7 +50,7 @@ app.get('/amenities/:id/amenities/', cache, async (req, res) => {
     client.setex(req.params.id, 300, JSON.stringify(amenities))
     res.json(amenities)
   } catch (e) {
-    res.status(500).send('Invalid Parm')
+    res.status(500).send(e)
   }
 })
 
