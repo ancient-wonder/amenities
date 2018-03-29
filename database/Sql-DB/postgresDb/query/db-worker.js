@@ -14,6 +14,8 @@ const {
 } = require('../schema/amenities_header')
 const pgp = require('pg-promise')()
 const dbtables = pgp({
+  user: 'postgres',
+  password: 'postgres',
   database: 'amenities',
   port: 5432
 })
