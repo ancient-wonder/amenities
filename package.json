@@ -10,7 +10,7 @@
   "scripts": {
     "test": "jest",
     "start:server": "webpack --watch & node server/index.js",
-    "start": "npm run seed-db & webpack & node server/index.js ",
+    "start": "webpack & node server/index.js ",
     "dev-react": "webpack -d --watch",
     "seed-db": "node seeds/worker.js"
   },

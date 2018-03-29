@@ -1,10 +1,8 @@
-FROM node:8.10
+FROM node:carbon
 
-WORKDIR /amenities
+WORKDIR /usr/src/amenities
 
-RUN mkdir -p /amenities
-
-COPY ./amenities
+COPY . .
 
 RUN npm install
 

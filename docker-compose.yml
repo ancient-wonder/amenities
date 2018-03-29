@@ -2,13 +2,17 @@ version: '3'
 
 services:
   overview:
-    build: ./
+    build: /
     depends_on:
-      - 'database'
+      - 'redis'
+      # - 'database'
     ports:
       - 3001:3001
     volumes:
       - .:/amenities
-
-  database:
-    image: mongo
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+  # database:
+  #   image: postgres

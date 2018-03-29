@@ -5,7 +5,7 @@ const pgData = require('./postgres_server')
 const redis = require('redis')
 const app = express()
 const port = process.env.PORT || 3001
-const client = redis.createClient(6379)
+const client = redis.createClient()
 
 app.use(cors())
 app.use('/amenities/:id', express.static(__dirname + '/../client/dist'))

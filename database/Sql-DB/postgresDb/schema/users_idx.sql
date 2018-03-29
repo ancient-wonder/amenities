@@ -1,1 +1,0 @@
-CREATE INDEX users_idx ON users (shipid);
