@@ -26,19 +26,11 @@ cache = (request, response, next) => {
   })
 }
 
-app.get('*.js', function(req, res, next) {
-  req.url = req.url + '.gz'
-  res.set('Content-Encoding', 'gzip')
-  next()
-})
-
-app.get('/test', (req, res) => {
-  res.send('hello world')
-})
-
-app.get('/test2', (req, res) => {
-  res.send('derp')
-})
+// app.get('*.js', function(req, res, next) {
+//   req.url = req.url + '.gz'
+//   res.set('Content-Encoding', 'gzip')
+//   next()
+// })
 
 app.get('/amenities/:id/amenities', cache, async (req, res) => {
   const { id } = req.params
@@ -53,6 +45,15 @@ app.get('/amenities/:id/amenities', cache, async (req, res) => {
     res.status(500).send(e)
   }
 })
+
+app.get('/test', (req, res) => {
+  res.send('hello world')
+})
+
+app.get('/test2', (req, res) => {
+  res.send('derp')
+})
+
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`)
