@@ -22,7 +22,7 @@ class Amenities extends React.Component {
       this.props.id || parseInt(window.location.pathname.split('/')[2], 10)
     return new Promise((resolve, reject) => {
       axios
-        .get(`http://localhost:3001/amenities/${id}/amenities`)
+        .get(`http://ec2-54-215-254-173.us-west-1.compute.amazonaws.com:3001/amenities/${id}/amenities`)
         .then(({ data }) => this.setState({ data: data }))
         .then(() => resolve())
         .catch(error => {
