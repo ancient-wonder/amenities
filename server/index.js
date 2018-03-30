@@ -42,8 +42,8 @@ app.get('/test2', (req, res) => {
 
 app.get('/amenities/:id/amenities', cache, async (req, res) => {
   const { id } = req.params
-  // Amenities.getAmenityById(id).then(result => res.json(result))
-  console.log('hello from ', id)
+  console.log(`hello from ${id}`)
+ // Amenities.getAmenityById(id).then(result => res.json(result))
   try {
     const amenities = await postgresData(id)
     console.log(amenities)

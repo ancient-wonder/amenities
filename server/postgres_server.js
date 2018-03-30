@@ -14,7 +14,8 @@ const connectionParams = {
   database: 'amenities'
 }
 
-// const connectionString = 'postgres://postgres:postgres@ec2-54-215-254-173.us-west-1.compute.amazonaws.com:5432/amenities'
+const connectionString =
+  'postgres://postgres:postgres@ec2-54-215-254-173.us-west-1.compute.amazonaws.com:5432/amenities'
 const db = pg(connectionParams)
 const randomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min //The maximum is inclusive and the minimum is inclusive
