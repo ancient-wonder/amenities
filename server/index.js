@@ -26,18 +26,18 @@ cache = (request, response, next) => {
   })
 }
 
-// app.get('*.js', function(req, res, next) {
-//   req.url = req.url + '.gz'
-//   res.set('Content-Encoding', 'gzip')
-//   next()
-// })
+app.get('*.js', function(req, res, next) {
+  req.url = req.url + '.gz'
+  res.set('Content-Encoding', 'gzip')
+  next()
+})
 
 app.get('/amenities/:id/amenities', cache, async (req, res) => {
   const { id } = req.params
   console.log(`hello from ${id}`)
  // Amenities.getAmenityById(id).then(result => res.json(result))
   try {
-    const amenities = await postgresData(id)
+    const amenities = await pgData(id)
     console.log(amenities)
     client.setex(req.params.id, 300, JSON.stringify(amenities))
     res.json(amenities)
